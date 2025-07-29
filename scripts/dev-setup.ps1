@@ -24,7 +24,7 @@ function symlink_children {
 
 $rose_next_root = (Get-Item $PSScriptRoot).Parent
 $asset_dir_debug = (Join-Path $rose_next_root "bin" "assets" "debug")
-$asset_dir_release = (Join-Path $rose_next_root "bin" "assets" "debug")
+$asset_dir_release = (Join-Path $rose_next_root "bin" "assets" "release")
 
 # Client links
 $client_dir_debug = (Join-Path $rose_next_root "dev" "client" "debug")
