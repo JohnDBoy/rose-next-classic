@@ -6,7 +6,8 @@
 
 # Assets build data
 .pipeline/
-
+./assets/*
+./data/*
 # Visual studio
 *.vs/
 *.pch
