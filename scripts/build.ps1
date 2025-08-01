@@ -14,10 +14,16 @@ function Write-Header {
 Write-Header "Building ROSE Next" "="
 
 # -- Setup vswhere.exe
-$vs_where = "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe"
+$vs_where = Join-Path ${env:ProgramFiles(x86)} "Microsoft Visual Studio/Installer/vswhere.exe"
 if (-not (Test-Path -Path $vs_where)) {
-  Write-Error "Could not find vswhere. Is visual studio installer installed? Expected location: $vs_where"
-  exit 1
+  Write-Host "vswhere.exe not found in default location, checking PATH..."
+  $vs_where_from_path = Get-Command vswhere.exe -ErrorAction SilentlyContinue
+  if ($vs_where_from_path) {
+    $vs_where = $vs_where_from_path.Source
+  } else {
+    Write-Error "Could not find vswhere.exe. Is Visual Studio installed? Expected location: $vs_where or in your PATH."
+    exit 1
+  }
 }
 Write-Host "Found vswhere: $vs_where"
 

@@ -8,7 +8,7 @@ param (
     [string]$out_name = "rose-next"
 )
 
-$pg_root = "C:/Program Files/PostgreSQL/12/bin"
+$pg_root = "E:\Program Files\PostgreSQL\17\bin"
 if (Test-Path "env:PGBIN") {
     $pg_root = $env:PGBIN
 }

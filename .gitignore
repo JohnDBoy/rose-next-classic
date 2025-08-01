@@ -6,6 +6,8 @@
 /[Ss]erver/
 /[Aa]ssets/
 /[Dd]ata/
+/[Aa]ssets - Copy/
+/[Ss]rc/target/
 
 # Assets build data
 .pipeline/

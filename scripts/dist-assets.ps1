@@ -1,4 +1,8 @@
 param (
+    # The build configuration
+    [ValidateSet("release", "debug")]
+    [string]$config = "release",
+
     # Directroy to assets
     [Parameter(Mandatory = $true)]
     [ValidateScript( { Test-Path $_ })]
@@ -15,8 +19,55 @@ param (
     [string]$server_out = (Join-Path $PSScriptRoot .. "dist/server/data")
 )
 
+$rose_next_root = (Get-Item $PSScriptRoot).Parent
+$pipeline = (Join-Path $rose_next_root "bin" $config "pipeline.exe")
+
 if ($noclient -eq $false) {
-    # TODO: Call pipeline bake, pack, etc.
+    if (-not (Test-Path -Path $pipeline)) {
+        Write-Error "pipeline.exe not found at '$pipeline'. Please build the project first."
+        exit 1
+    }
+
+    # Bake assets from source to an intermediate build directory
+    $bake_manifest = (Join-Path $assets_dir "bake.manifest")
+    if (-not (Test-Path -Path $bake_manifest)) {
+        Write-Error "Bake manifest not found at '$bake_manifest'."
+        exit 1
+    }
+    Write-Host "Baking client assets from '$assets_dir' to '$build_dir'..."
+    & $pipeline bake -c $bake_manifest $assets_dir $build_dir
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Asset baking failed with exit code $LASTEXITCODE."
+        exit 1
+    }
+
+    # Ensure the final client output directory exists
+    if (-not (Test-Path -Path $client_out)) {
+        New-Item -ItemType Directory -Force -Path $client_out | Out-Null
+    }
+
+    # Pack assets if not disabled, otherwise copy the baked assets
+    if ($nopack -eq $false) {
+        $pack_manifest = (Join-Path $assets_dir "pack.manifest")
+        if (-not (Test-Path -Path $pack_manifest)) {
+            Write-Error "Pack manifest not found at '$pack_manifest'."
+            exit 1
+        }
+        Write-Host "Packing client assets from '$build_dir' to '$client_out'..."
+        & $pipeline pack -c $pack_manifest $build_dir $client_out
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "Asset packing failed with exit code $LASTEXITCODE."
+            exit 1
+        }
+    }
+    else {
+        Write-Host "Packing skipped. Copying baked assets from '$build_dir' to '$client_out'..."
+        robocopy $build_dir $client_out /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP
+        if ($LASTEXITCODE -ge 8) {
+            Write-Error "Failed to copy baked assets. Robocopy exit code: $LASTEXITCODE."
+            exit 1
+        }
+    }
 }
 
 if ($noserver -eq $false) {

@@ -102,7 +102,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>common.lib;lib_util.lib;tgamectrl.lib;triggervfs.lib;znzin.lib;d3d9.lib;d3dx9.lib;dsound.lib;dxguid.lib;dxerr9.lib;discord_game_sdk.dll.lib;expat.lib;lualib4.lib;ogg.lib;vorbisfile.lib;zlib.lib;legacy_stdio_definitions.lib;odbc32.lib;odbccp32.lib;urlmon.lib;unicows.lib;winmm.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ntdll.lib;common.lib;lib_util.lib;tgamectrl.lib;triggervfs.lib;znzin.lib;d3d9.lib;d3dx9.lib;dsound.lib;dxguid.lib;dxerr9.lib;discord_game_sdk.dll.lib;expat.lib;lualib4.lib;ogg.lib;vorbisfile.lib;zlib.lib;legacy_stdio_definitions.lib;odbc32.lib;odbccp32.lib;urlmon.lib;unicows.lib;winmm.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName).exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration);$(SolutionDir)bin\$(Configuration)\thirdparty;$(SolutionDir)thirdparty\directx9\lib;$(SolutionDir)thirdparty\discord-2.5.6\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -150,7 +150,7 @@
       <Culture>0x0412</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>common.lib;lib_util.lib;tgamectrl.lib;triggervfs.lib;znzin.lib;d3d9.lib;d3dx9.lib;dsound.lib;dxguid.lib;dxerr9.lib;discord_game_sdk.dll.lib;expat.lib;lualib4.lib;ogg.lib;vorbisfile.lib;zlib.lib;legacy_stdio_definitions.lib;odbc32.lib;odbccp32.lib;urlmon.lib;unicows.lib;winmm.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ntdll.lib;common.lib;lib_util.lib;tgamectrl.lib;triggervfs.lib;znzin.lib;d3d9.lib;d3dx9.lib;dsound.lib;dxguid.lib;dxerr9.lib;discord_game_sdk.dll.lib;expat.lib;lualib4.lib;ogg.lib;vorbisfile.lib;zlib.lib;legacy_stdio_definitions.lib;odbc32.lib;odbccp32.lib;urlmon.lib;unicows.lib;winmm.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName).exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration);$(SolutionDir)bin\$(Configuration)\thirdparty;$(SolutionDir)thirdparty\directx9\lib;$(SolutionDir)thirdparty\discord-2.5.6\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

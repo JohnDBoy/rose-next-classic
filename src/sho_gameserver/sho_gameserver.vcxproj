@@ -195,7 +195,7 @@
     </Lib>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration);$(SolutionDir)bin\i686-pc-windows-msvc\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>common.lib;common-server.lib;lib_util.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ntdll.lib;common.lib;common-server.lib;lib_util.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -238,7 +238,7 @@
     </Lib>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)bin\$(Configuration);$(SolutionDir)bin\i686-pc-windows-msvc\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>common.lib;common-server.lib;lib_util.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ntdll.lib;common.lib;common-server.lib;lib_util.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
