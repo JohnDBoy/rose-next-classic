@@ -3,11 +3,14 @@
 /[Dd]ist/
 /[Dd]ev/
 /[Ll]ib/
+/[Ss]erver/
+/[Aa]ssets/
+/[Dd]ata/
 
 # Assets build data
 .pipeline/
-./assets/*
-./data/*
+.git/
+
 # Visual studio
 *.vs/
 *.pch

@@ -1,33 +1,33 @@
 [database]
-connection_string = "postgres://postgres:postgres@localhost/rose-next"
+connection_string = "postgres://postgres:PSQLPASSWORD@localhost/rose-next"
 
 [loginserver]
 ip = "127.0.0.1"
 port = 29000
 server_port = 19000
-password = "password"
+password = "PASSWORD"
 log_level = 0
-log_path = "C:\\rose-next\\server\\logs\\loginserver.log"
+log_path = "D:\\RoseNext\\rose-next\\server\\logs\\loginserver.log"
 minimum_access_level = 1
-max_users = 0
+max_users = 10
 
 [worldserver]
 ip = "127.0.0.1"
 port = 29100
 server_port = 19001
 world_name = "1Rose Next" # Prepend number to control ordering in world list
-data_dir = "C:\\rose-next\\server\\data"
-clanmark_dir = "C:\\rose-next\\server\\data\\clanmark"
+data_dir = "D:\\RoseNext\\rose-next\\server\\data"
+clanmark_dir = "D:\\RoseNext\\rose-next\\server\\data\\clanmark"
 log_level = 0
-log_path = "C:\\rose-next\\server\\logs\\worldserver.log"
+log_path = "D:\\RoseNext\\rose-next\\server\\logs\\worldserver.log"
 
 [gameserver]
 ip = "127.0.0.1"
 port = 29200
 server_name = "Channel 1"
-data_dir = "C:\\rose-next\\server\\data"
+data_dir = "D:\\RoseNext\\rose-next\\server\\data"
 log_level = 0
-log_path = "C:\\rose-next\\server\\logs\\gameserver.log"
+log_path = "D:\\RoseNext\\rose-next\\server\\logs\\gameserver.log"
 
 [game]
 base_move_speed = 200
