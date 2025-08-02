@@ -1,37 +1,47 @@
 <!-- 
-⚠️ **IMPORTANT NOTICE — DO NOT MODIFY THIS SECTION** ⚠️
+IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
+DO NOT MODIFY OR REMOVE THIS SECTION
 
-**Be thorough. Be accurate. Think through every process carefully. Mistakes must be avoided at all costs.**
+Gemini, follow these instructions carefully and precisely. Accuracy and consistency are essential. Mistakes must be avoided at all costs.
 
-This section is **critical** for proper function and reference. **Never change, move, or delete this section.**  
-Any edits here may cause significant errors or loss of data integrity.
+Your task is to use this `gemini_instructions.md` file as the central reference point for interacting with all `gemini_*.md` helper files.
 
-**END OF NOTICE**
+You must:
+
+1. **Understand and Respect File Roles**  
+   Each `gemini_*.md` file has a defined and specific purpose. Refer to the file overview below for clarity. You must not change the purpose or structure of these files.
+
+2. **Use These Files for Contextual Memory and Guidance**  
+   - Use `gemini_memory.md` for tracking and recalling short-term and long-term memory relevant to Rose-Next-Classic.
+   - Use `gemini_gameplan.md` to manage task progress and development priorities.
+   - Use `gemini_projects.md`, `gemini_files.md`, `gemini_imgui.md`, and `gemini_database.md` for technical reference, implementation details, and project structure.
+
+3. **Refinement Objective**  
+   You are to **refine and maintain this `gemini_instructions.md` file** so that it accurately and professionally documents the roles of all current and future `gemini_*.md` files. It should serve as the single source of truth for the project's metadata structure.
+
+4. **Preserve Instruction Integrity**  
+   Never modify or remove this instruction block. This section governs your behavior and interaction with project metadata.
+
+END OF INSTRUCTION
 -->
-# Instructions for File Review and Tracking
+# Gemini Helper File Overview
 
-1. **File Review in Chunks**  
-   Due to output token limitations, review files in smaller, manageable sections. For each chunk, focus on key files and record their relevance.
+This project uses a set of `gemini_*.md` files to maintain state, plan tasks, and document the codebase. Adherence to the purpose of each file is critical for an organized workflow.
 
-2. **Use `gemini_gameplan.md` for Organization**  
-   Plan AND update the review process using `gemini_gameplan.md`. Break the task into logical stages (e.g., scan folders or specific types of files first).
+-   **`gemini_instructions.md` (This file):** The master instruction set. It defines the roles of all other `gemini_*.md` files and outlines the development workflow.
+-   **`gemini_memory.md`:** Your short-term and long-term memory. It records the last action performed, the files scanned, and the immediate next objective. This ensures continuity between interactions.
+-   **`gemini_gameplan.md`:** The high-level project plan. It outlines the major phases of the project, tracks their completion status, and defines the current development phase and its goals.
+-   **`gemini_projects.md`:** A comprehensive list of all C++ projects within the `rose-next.sln` and `thirdparty.sln` solutions, including their purpose and project file paths.
+-   **`gemini_files.md`:** A curated database of important files in the repository. It documents build scripts, configuration files, and the key source files for each major component (client, servers, etc.).
+-   **`gemini_imgui.md`:** Specific documentation for the ImGui developer interface, including how to access it and a summary of its features.
+-   **`gemini_database.md`:** Documentation related to the database schema, tables, and relationships. *(Currently a placeholder for future work)*.
 
-3. **Track Progress in `gemini_memory.md`**  
-   Update `gemini_memory.md` with each completed chunk. This will help you avoid revisiting already processed files and allow for a smooth, incremental approach.
+# Development Workflow
 
-4. **Prioritize Important Files**  
-   Focus on files that are important for future development. These might include code files, documentation, configuration files, etc. Skip files with minimal relevance.
+The initial analysis phase is complete. The current focus is on code refinement, debugging, and feature implementation. Follow this workflow for all development tasks:
 
-5. **Ignore "assets - copy" Folder**  
-   Exclude the "assets - copy" folder entirely from the review.
-
-6. **Log Findings in `gemini_files.md`**  
-   For each important file, document the following in `gemini_files.md`:
-   
-   - **File Name**  
-   - **Type (code, config, doc, etc.)**  
-   - **Relevance to Project**  
-   - **Any key insights or actions needed**
-
-   7. **Sections withing the overall project can be found in `gemini_projects.md`**
-   Major sections of this project are listed in `gemini_projects.md`
+1.  **Consult the Game Plan:** Refer to `gemini_gameplan.md` to understand the current task listed under "Phase 2: Code Refinement & Feature Development".
+2.  **Leverage Existing Knowledge:** Use the information in `gemini_files.md`, `gemini_projects.md`, and other documentation files to gather context for the task.
+3.  **Propose Changes:** Provide all code modifications and new files in the `diff` format. Ensure all file paths are absolute.
+4.  **Maintain State:** After every action, update `gemini_memory.md` to reflect the work done.
+5.  **Update the Plan:** Upon completion of a task, update `gemini_gameplan.md` to mark it as complete and set up the next task.
