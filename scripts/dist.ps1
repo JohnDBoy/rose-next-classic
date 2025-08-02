@@ -42,18 +42,39 @@ Write-Host $texconv
 Write-Host "Collecting files to $out"
 
 if ($client -eq $true) {
-    Write-Host "Collecting client binaries"
+    Write-Host "Collecting client files..."
+    if (-not (Test-Path -Path $client_out)) {
+        New-Item -ItemType Directory -Force -Path $client_out | Out-Null
+    }
+
+    Write-Host "Copying client binaries..."
     xcopy /Y (Join-Path $build_root triggervfs.dll) $client_out
     xcopy /Y (Join-Path $build_root rosenext.exe) $client_out
     xcopy /Y (Join-Path $build_root znzin.dll) $client_out
     xcopy /Y $discord_dll $client_out
 
-    Write-Host "Collecting client assets"
+    Write-Host "Copying client assets..."
     if ($config -eq "debug") {
-        robocopy /E $asset_build_root $client_out
+        robocopy $asset_build_root $client_out /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP
+        if ($LASTEXITCODE -ge 8) {
+            Write-Error "Failed to copy client assets for debug build. Robocopy exit code: $LASTEXITCODE"
+            exit 1
+        }
     }
     else {
-        & $PSScriptRoot/pack.ps1 -out $client_out
+        $pack_script = Join-Path $PSScriptRoot "pack.ps1"
+        if (Test-Path -Path $pack_script) {
+            Write-Host "Packing client assets for release build..."
+            & $pack_script -out $client_out
+            if (!$?) {
+                Write-Error "Failed to pack client assets using pack.ps1"
+                exit 1
+            }
+        } else {
+            Write-Warning "pack.ps1 not found. Asset packing for release build will be skipped."
+            Write-Host "As a fallback, copying loose client assets. This is not recommended for a final distribution."
+            robocopy $asset_build_root $client_out /E
+        }
     }
 }
 else {
