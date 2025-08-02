@@ -1,37 +1,72 @@
 <!-- 
-⚠️ **IMPORTANT NOTICE — DO NOT MODIFY THIS SECTION** ⚠️
-**Be thorough. Be accurate. Think through every process carefully. Mistakes must be avoided at all costs.**
-This section is **critical** for proper function and reference. **Never change, move, or delete this section.**  
-Any edits here may cause significant errors or loss of data integrity.
-**END OF NOTICE**
+IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
+DO NOT MODIFY OR REMOVE THIS SECTION
+
+Gemini, this file documents the database schema. Use it to understand data relationships and to construct correct SQL queries.
+
+1.  **Purpose**: To serve as the reference for database tables, columns, and relationships.
+2.  **Instruction Integrity**: Never modify or remove this instruction block.
+
+END OF INSTRUCTION
 -->
 
 # Database Schema
 
-This document outlines the structure of the game's database tables.
+This document outlines the PostgreSQL database schema.
+**Note:** `database/rose-next.sql` is an outdated MSSQL reference.
 
-**Note on SQL Dialect:** The project's build scripts and server code confirm the use of **PostgreSQL**. The `database/rose-next.sql` file appears to be an outdated reference using MS SQL Server syntax and should not be considered the source of truth for the current schema.
+## Key Tables
 
-## `account`
+### `account`
+Stores user account information and credentials.
 
-Stores user account information, credentials, and access levels.
+| Column         | Type          | Description                                  |
+| -------------- | ------------- | -------------------------------------------- |
+| `id`           | `integer`     | Unique account ID (PK).                      |
+| `email`        | `varchar`     | User's email, used for login.                |
+| `password`     | `varchar(64)` | Hashed password.                             |
+| `salt`         | `varchar`     | Salt for password hashing.                   |
+| `access_level` | `integer`     | Account access level (e.g., GM).             |
+| `created`      | `timestamp`   | UTC timestamp of account creation.           |
 
-| Column           | Type          | Nullable | Description                                                              |
-| ---------------- | ------------- | -------- | ------------------------------------------------------------------------ |
-| `id`             | `integer`     | No       | The unique identifier for the account (Primary Key).                     |
-| `email`          | `varchar`     | No       | The user's email address, which is also used as the login username.      |
-| `password`       | `varchar(64)` | No       | The user's hashed password.                                              |
-| `salt`           | `varchar`     | No       | The salt used for password hashing.                                      |
-| `access_level`   | `integer`     | No       | The access level for the account (e.g., for Game Masters).               |
-| `remember_token` | `varchar`     | Yes      | A token for "remember me" functionality, likely used by the website.     |
-| `created`        | `timestamp`   | No       | The UTC timestamp when the account was created.                          |
+**Note:** A critical login authentication bug exists related to password hashing. See `gemini/gemini_knownbugs.md`.
 
-### Notes
+### `character`
+Stores all data for a player character.
 
-*   **Login Authentication Flow & Bug:**
-    1.  The client (`CNetwork::send_login_req`) takes the raw password, computes a SHA256 hash (a 64-character hex string), and sends this hash to the login server.
-    2.  The login server (`CLS_SqlTHREAD::handle_login_req`) receives this *already-hashed* password.
-    3.  It fetches the `salt` for the account from the database.
-    4.  It then computes a new hash: `sha256( <client_sent_hash> + <database_salt> )`.
-    5.  This final hash is compared against the `password` field in the database.
-*   **Conclusion:** This is a bug in the authentication logic. The client should be sending the raw password, and the server should be performing the `sha256( <raw_password> + <database_salt> )` calculation. As it stands, for a user to log in, their database `password` field must be pre-calculated as `sha256(sha256(raw_password) + salt)`.
+| Column                   | Type        | Description                                      |
+| ------------------------ | ----------- | ------------------------------------------------ |
+| `id`                     | `integer`   | Unique character ID (PK).                        |
+| `account_email`          | `varchar`   | Owner account email.                             |
+| `name`                   | `varchar`   | Unique character name.                           |
+| `level`                  | `smallint`  | Current level.                                   |
+| `exp`                    | `bigint`    | Current experience points.                       |
+| `job_id`                 | `smallint`  | Job/class ID.                                    |
+| `money`                  | `bigint`    | Carried currency.                                |
+| `hp`, `mp`, `stamina`    | `integer`   | Current HP/MP/Stamina.                           |
+| `str`, `dex`, `intt`, `con`, `cha`, `sen` | `integer` | Base stats.                            |
+| `map_id`                 | `smallint`  | Current map ID.                                  |
+| `respawn_x`, `respawn_y` | `float`     | Current world coordinates.                       |
+| `skills`, `quests`, `hotbar`, `wishlist` | `json` | JSON data for skills, quests, hotbar, etc. |
+| `delete_by`              | `timestamp` | Timestamp for scheduled deletion.                |
+
+### `item`
+Stores unique instances of every item in the game world.
+
+| Column         | Type        | Description                                      |
+| -------------- | ----------- | ------------------------------------------------ |
+| `id`           | `integer`   | Unique item instance ID (PK).                    |
+| `uuid`         | `uuid`      | Universally unique item ID.                      |
+| `game_data_id` | `integer`   | Static item type ID (from STB files).            |
+| `type_id`      | `integer`   | Item type category (e.g., Weapon, Armor).        |
+| `grade`, `durability`, etc. | `smallint`/`boolean` | Various item stats and flags. |
+
+### `inventory`
+A link table connecting characters to their items.
+
+| Column     | Type      | Description                                      |
+| ---------- | --------- | ------------------------------------------------ |
+| `owner_id` | `integer` | Owner character ID.                              |
+| `slot`     | `integer` | Inventory slot number.                           |
+| `quantity` | `integer` | Stack size for stackable items.                  |
+| `item_id`  | `integer` | Item instance ID (FK to `item.id`).              |

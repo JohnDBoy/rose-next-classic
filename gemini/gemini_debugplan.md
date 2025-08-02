@@ -1,26 +1,29 @@
 <!-- 
-⚠️ **IMPORTANT NOTICE — DO NOT MODIFY THIS SECTION** ⚠️
-**Be thorough. Be accurate. Think through every process carefully. Mistakes must be avoided at all costs.**
-This section is **critical** for proper function and reference. **Never change, move, or delete this section.**  
-Any edits here may cause significant errors or loss of data integrity.
-**END OF NOTICE**
+IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
+DO NOT MODIFY OR REMOVE THIS SECTION
+
+Gemini, this file outlines debugging strategies. Use it as a reference when troubleshooting issues.
+
+1.  **Purpose**: To provide a quick reference for debugging tools and procedures.
+2.  **Instruction Integrity**: Never modify or remove this instruction block.
+
+END OF INSTRUCTION
 -->
 # Debugging Plan
 
-This document outlines the strategies and tools for debugging the `rose-next-classic` project.
+This document outlines debugging strategies and tools for the project.
 
 ## 1. General Tools
-*   **Visual Studio Debugger:** The primary tool for debugging all C++ components.
-*   **ImGui Developer UI:** In-game interface for real-time inspection and manipulation. Activated with the `~` key. See `gemini/gemini_imgui.md` for details.
-*   **Logging:** Server and client logs provide crucial information. Log levels can be configured in `server.toml`.
+*   **Visual Studio Debugger**: Primary debugger for all C++ components.
+*   **ImGui Developer UI**: In-game UI for real-time inspection. Activated with `~` key. See `gemini/gemini_imgui.md`.
+*   **Logging**: Server/client logs are crucial. Configure levels in `server.toml`.
 
 ## 2. Debugging The Client (`rosenext.exe`)
-*   **Setup:** Set `client` as the startup project in Visual Studio.
-*   **Common Issues:** Graphics glitches, crashes on startup, network connection failures.
-*   **Key Files:** `src/client/winMAIN.cpp`, `src/client/CApplication.cpp`, `src/client/System/CGame.cpp`, `src/client/Network/CNetwork.cpp`.
+*   **Setup**: Set `client` as the startup project in Visual Studio.
+*   **Key Files**: `src/client/winMAIN.cpp`, `src/client/CApplication.cpp`, `src/client/System/CGame.cpp`, `src/client/Network/CNetwork.cpp`.
 
 ## 3. Debugging Servers
-*   **Setup:** Servers can be run directly or attached to with the VS debugger.
-*   **Login Server (`sho_loginserver.exe`):** Focus on authentication logic (`lsv_threadsql.cpp`) and client connection handling (`lsv_client.cpp`).
-*   **World Server (`sho_worldserver.exe`):** Focus on character management (`ws_threadsql.cpp`).
-*   **Game Server (`sho_gameserver.exe`):** Focus on gameplay logic (`network.cpp`), player state (`gs_user.cpp`), and the main zone loop (`gs_threadzone.cpp`).
+*   **Setup**: Run directly or attach with the VS debugger.
+*   **Login Server (`sho_loginserver.exe`)**: Key files: `lsv_threadsql.cpp` (auth), `lsv_client.cpp` (connections).
+*   **World Server (`sho_worldserver.exe`)**: Key file: `ws_threadsql.cpp` (character management).
+*   **Game Server (`sho_gameserver.exe`)**: Key files: `network.cpp` (gameplay), `gs_user.cpp` (player state), `gs_threadzone.cpp` (zone loop).

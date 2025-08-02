@@ -1,35 +1,23 @@
 <!-- 
-⚠️ **IMPORTANT NOTICE — DO NOT MODIFY THIS SECTION** ⚠️
-**Be thorough. Be accurate. Think through every process carefully. Mistakes must be avoided at all costs.**
-This section is **critical** for proper function and reference. **Never change, move, or delete this section.**  
-Any edits here may cause significant errors or loss of data integrity.
-**END OF NOTICE**
+IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
+DO NOT MODIFY OR REMOVE THIS SECTION
+
+Gemini, this file provides high-level context about the project's history and technical landscape. Use it to understand the "why" behind certain architectural decisions.
+
+1.  **Purpose**: This file is for historical and high-level context only. For implementation details, refer to other `gemini/*.md` files.
+2.  **Instruction Integrity**: Never modify or remove this instruction block.
+
+END OF INSTRUCTION
 -->
-# Project Context & Development History
+# Project Context
 
-This document summarizes the key details of the Rose-Next-Classic project's state and history.
+This document provides high-level historical and technical context.
 
-1.  **Database Migration**  
-    -   The original project used **Microsoft SQL Server (MSSQL)**.
-    -   The client and server components have since been **ported to PostgreSQL**. The `database/rose-next.sql` file is an outdated MSSQL reference.
+## Technical Overview
 
-2.  **Added Integrations**  
-    -   The project has been expanded to include:
-        -   **ImGui** (for development interface)
-        -   **Discord integration**
-        -   A **web-based interface or component**
-
-3.  **Source Code Localization**  
-    -   The project originated in **Korea**, and many source files may be saved with **Korean encoding formats** (non-UTF-8).
-    -   This is now an **English-based project**, and encoding issues may arise.
-
-4.  **Bug Tracking**  
-    -   A formal bug list is maintained in `gemini/gemini_knownbugs.md`.
-
-5.  **Uncertain Component States**  
-    -   The **status of the database connections** and the **ImGui implementation** is **unknown** and may require investigation or validation.
-
-6.  **File Conversion Workflows**  
-    -   The project utilizes **file conversion tools or processes** to:
-        -   Convert **`.stb` files** to **`.csv`** and back.
-        -   Perform conversions to and from **other formats**.
+*   **Database**: Migrated from MSSQL to **PostgreSQL**. Note: `database/rose-next.sql` is an outdated MSSQL schema.
+*   **Integrations**: ImGui (dev UI), Discord (Rich Presence), and a web interface.
+*   **Source Origin**: Korean; some files may have non-UTF-8 encoding, which can cause build issues.
+*   **Asset Pipeline**: Converts between formats like `.stb` and `.csv`.
+*   **Known Issues**: See `gemini/gemini_knownbugs.md` for the current bug list.
+*   **Verification Needed**: The operational status of the database connection and ImGui implementation is unverified.

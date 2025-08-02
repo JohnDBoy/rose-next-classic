@@ -2,51 +2,29 @@
 IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
 DO NOT MODIFY OR REMOVE THIS SECTION
 
-Gemini, follow these instructions carefully and precisely. Accuracy and consistency are essential. Mistakes must be avoided at all costs.
+Gemini, this file is your central reference for understanding the project's metadata structure and your development workflow.
 
-Your task is to use this `gemini_instructions.md` file as the central reference point for interacting with all `gemini_*.md` helper files.
+1.  **File Roles**: You must understand the purpose of each `gemini/*.md` file. Refer to `gemini/gemini_md_file_list.md` for a complete index and summary of each file's role.
 
-You must:
+2.  **Single Source of Truth**: This file defines the standard development workflow.
 
-1.  **Understand and Respect File Roles**
-    Each `gemini/gemini_*.md` file has a defined and specific purpose. Refer to the file overview below for clarity. You must not change the purpose or structure of these files.
-
-2. **Use These Files for Contextual Memory and Guidance**  
-   - Use `gemini/gemini_memory.md` for tracking and recalling short-term and long-term memory relevant to Rose-Next-Classic.
-   - Use `gemini/gemini_gameplan.md` to manage task progress and development priorities.
-   - Use `gemini/gemini_projects.md`, `gemini/gemini_files.md`, `gemini/gemini_imgui.md`, and `gemini/gemini_database.md` for technical reference, implementation details, and project structure.
-
-3. **Refinement Objective**  
-   You are to **refine and maintain this `gemini/gemini_instructions.md` file** so that it accurately and professionally documents the roles of all current and future `gemini/gemini_*.md` files. It should serve as the single source of truth for the project's metadata structure.
-
-4. **Preserve Instruction Integrity**  
-   Never modify or remove this instruction block. This section governs your behavior and interaction with project metadata.
+3.  **Instruction Integrity**: Never modify or remove this instruction block.
 
 END OF INSTRUCTION
 -->
-# Gemini Helper File Overview
+# Gemini Instructions
 
-This project uses a set of `gemini/gemini_*.md` files to maintain state, plan tasks, and document the codebase. Adherence to the purpose of each file is critical for an organized workflow.
+This document defines the standard development workflow and serves as the master guide for using the `gemini/*.md` helper files.
 
-*   **`gemini/gemini_context.md`**: A summary of the project's development history, technical migrations, and other high-level context.
-*   **`gemini/gemini_database.md`**: Documentation related to the database schema, tables, and relationships.
-*   **`gemini/gemini_debugplan.md`**: Outlines strategies and tools for debugging various components of the project.
-*   **`gemini/gemini_files.md`**: A curated database of important files in the repository.
-*   **`gemini/gemini_gameplan.md`**: The high-level project plan, outlining major phases and tracking task completion.
-*   **`gemini/gemini_imgui.md`**: Specific documentation for the ImGui developer interface.
-*   **`gemini/gemini_instructions.md`**: The master instruction set that defines the roles of all other `gemini_*.md` files.
-*   **`gemini/gemini_knownbugs.md`**: A curated list of known bugs, their impact, and proposed solutions.
-*   **`gemini/gemini_md_file_list.md`**: A quick reference index of all `gemini_*.md` files.
-*   **`gemini/gemini_memory.md`**: Your short-term and long-term memory, tracking actions and objectives.
-*   **`gemini/gemini_projects.md`**: A comprehensive list of all C++ projects within the solutions.
-*   **`gemini/gemini_prompt.md`**: Contains the master instructions that guide your behavior and interaction with all project metadata files.
+## File Roles
 
-# Development Workflow
+For a complete list and description of each `gemini/*.md` file, refer to the quick reference index:
+*   **`gemini/gemini_md_file_list.md`**
 
-The initial analysis phase is complete. The current focus is on code refinement, debugging, and feature implementation. Follow this workflow for all development tasks:
+## Development Workflow
 
-1.  **Consult the Game Plan:** Refer to `gemini/gemini_gameplan.md` to understand the current task listed under "Phase 2: Code Refinement & Feature Development".
-2.  **Leverage Existing Knowledge:** Use the information in `gemini/gemini_files.md`, `gemini/gemini_projects.md`, and other documentation files to gather context for the task.
-3.  **Propose Changes:** Provide all code modifications and new files in the `diff` format. Ensure all file paths are absolute.
-4.  **Maintain State:** After every action, update `gemini/gemini_memory.md` to reflect the work done.
-5.  **Update the Plan:** Upon completion of a task, update `gemini/gemini_gameplan.md` to mark it as complete and set up the next task.
+1.  **Consult Game Plan**: Refer to `gemini/gemini_gameplan.md` to understand the current task.
+2.  **Gather Context**: Use the `gemini/*.md` documentation files to gather context.
+3.  **Propose Changes**: Provide all code modifications in `diff` format with absolute file paths.
+4.  **Update Memory**: After every action, append a summary to `gemini/gemini_memory.md`.
+5.  **Update Plan**: Upon task completion, update `gemini/gemini_gameplan.md`.

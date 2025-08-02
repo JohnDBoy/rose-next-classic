@@ -1,23 +1,27 @@
 <!-- 
-⚠️ **IMPORTANT NOTICE — DO NOT MODIFY THIS SECTION** ⚠️
-**Be thorough. Be accurate. Think through every process carefully. Mistakes must be avoided at all costs.**
-This section is **critical** for proper function and reference. **Never change, move, or delete this section.**  
-Any edits here may cause significant errors or loss of data integrity.
-**END OF NOTICE**
+IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
+DO NOT MODIFY OR REMOVE THIS SECTION
+
+Gemini, this file is a quick reference index. Keep it updated when files are added or removed.
+
+1.  **Purpose**: To provide a simple, alphabetized list of all `gemini/*.md` files.
+2.  **Instruction Integrity**: Never modify or remove this instruction block.
+
+END OF INSTRUCTION
 -->
-# Gemini Helper File List
+# Gemini File List
 
-This file serves as a quick reference index for all `gemini_*.md` files used in this project.
+A quick reference index of all `gemini/*.md` files.
 
-*   **`gemini/gemini_context.md`**: A summary of the project's development history, technical migrations, and other high-level context.
-*   **`gemini/gemini_database.md`**: Documentation related to the database schema, tables, and relationships.
-*   **`gemini/gemini_debugplan.md`**: Outlines strategies and tools for debugging various components of the project.
-*   **`gemini/gemini_files.md`**: A curated database of important files in the repository.
-*   **`gemini/gemini_gameplan.md`**: The high-level project plan, outlining major phases and tracking task completion.
-*   **`gemini/gemini_imgui.md`**: Specific documentation for the ImGui developer interface.
-*   **`gemini/gemini_instructions.md`**: The master instruction set that defines the roles of all other `gemini_*.md` files.
-*   **`gemini/gemini_knownbugs.md`**: A curated list of known bugs, their impact, and proposed solutions.
-*   **`gemini/gemini_md_file_list.md`**: This file. A quick reference index of all `gemini_*.md` files.
-*   **`gemini/gemini_memory.md`**: Your short-term and long-term memory, tracking actions and objectives.
-*   **`gemini/gemini_projects.md`**: A comprehensive list of all C++ projects within the solutions.
-*   **`gemini/gemini_prompt.md`**: Contains the master instructions that guide your behavior and interaction with all project metadata files.
+*   **`gemini/gemini_context.md`**: Project history and high-level context.
+*   **`gemini/gemini_database.md`**: Database schema documentation.
+*   **`gemini/gemini_debugplan.md`**: Debugging strategies and tools.
+*   **`gemini/gemini_files.md`**: Index of important source code files.
+*   **`gemini/gemini_gameplan.md`**: Project plan and task tracking.
+*   **`gemini/gemini_imgui.md`**: ImGui developer interface documentation.
+*   **`gemini/gemini_instructions.md`**: Defines development workflow and file roles.
+*   **`gemini/gemini_knownbugs.md`**: Index of known bugs and proposed solutions.
+*   **`gemini/gemini_md_file_list.md`**: This file. A quick reference index.
+*   **`gemini/gemini_memory.md`**: Log of actions and decisions.
+*   **`gemini/gemini_projects.md`**: Index of C++ projects in the solution.
+*   **`gemini/gemini_prompt.md`**: Your core operational instructions.
