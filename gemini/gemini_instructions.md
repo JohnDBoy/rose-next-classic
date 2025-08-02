@@ -36,6 +36,7 @@ This project uses a set of `gemini/gemini_*.md` files to maintain state, plan ta
 *   **`gemini/gemini_imgui.md`**: Specific documentation for the ImGui developer interface.
 *   **`gemini/gemini_instructions.md`**: The master instruction set that defines the roles of all other `gemini_*.md` files.
 *   **`gemini/gemini_knownbugs.md`**: A curated list of known bugs, their impact, and proposed solutions.
+*   **`gemini/gemini_md_file_list.md`**: A quick reference index of all `gemini_*.md` files.
 *   **`gemini/gemini_memory.md`**: Your short-term and long-term memory, tracking actions and objectives.
 *   **`gemini/gemini_projects.md`**: A comprehensive list of all C++ projects within the solutions.
 *   **`gemini/gemini_prompt.md`**: Contains the master instructions that guide your behavior and interaction with all project metadata files.

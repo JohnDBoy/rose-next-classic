@@ -10,5 +10,5 @@ Any edits here may cause significant errors or loss of data integrity.
 *   **Last Action:** Internalized the project's development state and history to guide future tasks.
 *   **Current Step:** Phase 2: Development & Refinement.
 *   **Files Scanned:** All `gemini/*.md` files.
-*   **Last Action:** Added descriptions to `gemini/gemini_md_file_list.md`.
-*   **Next Step:** Synchronize the file descriptions in `gemini/gemini_instructions.md` with the ones from `gemini/gemini_md_file_list.md` and reorder the list alphabetically for consistency.
+*   **Last Action:** Synchronized and reordered the file descriptions in `gemini/gemini_instructions.md` and `gemini/gemini_md_file_list.md`.
+*   **Next Step:** Refactor `gemini/gemini_prompt.md` to remove redundant information and clearly establish `gemini/gemini_instructions.md` as the single source of truth for project workflow and file roles.

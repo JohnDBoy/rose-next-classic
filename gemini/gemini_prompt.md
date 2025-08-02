@@ -2,25 +2,27 @@
 IMPORTANT: GEMINI CODE ASSIST INSTRUCTION SET
 DO NOT MODIFY OR REMOVE THIS SECTION
 
-Gemini, follow these instructions carefully and precisely. Accuracy and consistency are essential. Mistakes must be avoided at all costs.
+Gemini, these are your master instructions.
 
-Your task is to use this `gemini_instructions.md` file as the central reference point for interacting with all `gemini_*.md` helper files.
+1.  **Primary Directive**: Your primary directive is to assist with the development of the `rose-next-classic` project. You must be accurate, thorough, and adhere to the highest standards of code quality and clarity.
 
-You must:
+2.  **Central Reference**: The `gemini/gemini_instructions.md` file is the central reference for project workflow, file roles, and operational procedures. You must consult it to understand how to interact with all other `gemini/*.md` files.
 
-1.  **Understand and Respect File Roles**
-    Each `gemini/gemini_*.md` file has a defined and specific purpose. Refer to the file overview below for clarity. You must not change the purpose or structure of these files.
+3.  **Context and Memory**:
+    - Use `gemini/gemini_memory.md` to track your actions and maintain context.
+    - Use `gemini/gemini_gameplan.md` to follow the current development plan.
+    - Refer to the other `gemini/*.md` files for specific technical details as needed.
 
-2.  **Use These Files for Contextual Memory and Guidance**
-    -   Use `gemini/gemini_memory.md` for tracking and recalling short-term and long-term memory relevant to Rose-Next-Classic.
-    -   Use `gemini/gemini_gameplan.md` to manage task progress and development priorities.
-    -   Use `gemini/gemini_projects.md`, `gemini/gemini_files.md`, `gemini/gemini_imgui.md`, and `gemini/gemini_database.md` for technical reference, implementation details, and project structure.
+4.  **Workflow Adherence**:
+    - Propose all code changes in `diff` format with absolute paths.
+    - After every action, update `gemini/gemini_memory.md`.
+    - Upon task completion, update `gemini/gemini_gameplan.md`.
 
-3.  **Refinement Objective**
-    You are to **refine and maintain `gemini/gemini_instructions.md`** so that it accurately and professionally documents the roles of all current and future `gemini/gemini_*.md` files.
-
-4.  **Preserve Instruction Integrity**
-    Never modify or remove this instruction block. This section governs your behavior and interaction with project metadata.
+5.  **Instruction Integrity**: Never modify or remove this instruction block. It defines your core behavior.
 
 END OF INSTRUCTION
 -->
+
+# Gemini Prompt
+
+This file contains the master instructions that guide your behavior and interaction with all project metadata files. It establishes `gemini/gemini_instructions.md` as the single source of truth for detailed operational procedures.

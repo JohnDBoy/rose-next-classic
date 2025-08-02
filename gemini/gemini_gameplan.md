@@ -29,5 +29,6 @@ This document outlines the development and refinement plan for the `rose-next-cl
     5.  Create `gemini/gemini_md_file_list.md` to list all `gemini_*.md` files. (Complete)
     6.  Create and define `gemini/gemini_debugplan.md`. (Complete)
     7.  Add descriptions to `gemini/gemini_md_file_list.md`. (Complete)
-    8.  Synchronize and reorder file descriptions in `gemini/gemini_instructions.md`. (Next)
-    9.  Fix the client/server authentication bug. (Postponed)
+    8.  Synchronize and reorder file descriptions in `gemini/gemini_instructions.md`. (Complete)
+    9.  Refactor `gemini/gemini_prompt.md` to remove redundancy and point to `gemini/gemini_instructions.md`. (Next)
+    10. Fix the client/server authentication bug. (Postponed)
