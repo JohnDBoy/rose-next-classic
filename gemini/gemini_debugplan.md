@@ -27,3 +27,18 @@ This document outlines debugging strategies and tools for the project.
 *   **Login Server (`sho_loginserver.exe`)**: Key files: `lsv_threadsql.cpp` (auth), `lsv_client.cpp` (connections).
 *   **World Server (`sho_worldserver.exe`)**: Key file: `ws_threadsql.cpp` (character management).
 *   **Game Server (`sho_gameserver.exe`)**: Key files: `network.cpp` (gameplay), `gs_user.cpp` (player state), `gs_threadzone.cpp` (zone loop).
+## 4. Debugging Character Data (Save/Load)
+
+The character persistence process is split between the world and game servers.
+
+*   **Loading Flow**:
+    1.  **Character List (`sho_worldserver`)**: On login, the world server loads a *minimal* character list for the selection screen. It does not load full item data.
+        *   **File**: `src/sho_worldserver/src/ws_threadsql.cpp`
+        *   **Function**: `Proc_cli_CHAR_LIST`
+    2.  **Full Character Data (`sho_gameserver`)**: After character selection, the client connects to the game server, which loads the *complete* character data, including full inventory details, from the database.
+        *   **File**: `src/sho_gameserver/src/gs_threadsql.cpp`
+        *   **Function**: `Proc_cli_SELECT_CHAR`
+
+*   **Saving Flow**:
+    1.  **`sho_gameserver`**: On logout, the game server queues the character data for saving. The SQL thread then writes all data to the database.
+        *   **File**: `src/sho_gameserver/

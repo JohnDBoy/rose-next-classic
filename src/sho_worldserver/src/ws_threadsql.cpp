@@ -208,7 +208,7 @@ CWS_ThreadSQL::Run_SqlPACKET(tagQueryDATA* pSqlPACKET) {
 
 bool
 CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
-
+    // Get the basic character List for the account
     const char* stmt = "SELECT id, name, level, job_id, gender_id, face_id, hair_id, delete_by "
                        "FROM character WHERE "
                        "account_email=$1";
@@ -216,6 +216,7 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
     std::string username = pSqlPACKET->m_Name.Get();
     QueryResult res = this->db.query(stmt, {username});
     if (!res.is_ok()) {
+        // ... error handling ...
         std::string msg = this->db.last_error_message();
         LOG_ERROR("Error getting character list for account {}: {}", username.c_str(), msg.c_str());
         return false;
@@ -231,8 +232,12 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
     std::vector<std::string> delete_list;
     DateTime now = std::chrono::system_clock::now();
 
+// ... packet setup ...
+
     for (size_t idx = 0; idx < char_count; ++idx) {
         std::string char_id = res.get_string(idx, 0);
+        // ... read bsic character data (name, level, job, etc.) ...
+
         std::string char_name = res.get_string(idx, 1);
         int level = res.get_int32(idx, 2);
         int job_id = res.get_int32(idx, 3);
@@ -267,6 +272,11 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
         equipment[BODY_PART_FACE].m_nItemNo = face_id;
         equipment[BODY_PART_HAIR].m_nItemNo = hair_id;
 
+        // 2. For each character, get their equipped items for display.
+        // NOTE: This query only fetches the item's visual ID (`game_data_id`).
+        // It does NOT load the full item properties like `grade` or `socket`.
+        // The crash likely occurs in a different, more detailed loading function
+
         QueryResult equip_res =
             this->db.query("SELECT inventory.slot, item.game_data_id "
                               "FROM inventory INNER JOIN item ON inventory.item_id = item.id "
@@ -286,7 +296,7 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
             if (slot >= 0 && slot < MAX_EQUIP_IDX) {
                 equipment[part_idx].m_nItemNo = game_data_id;
             }
-
+            //  ... more Logic for coutume items ...
             if (slot >= INVENTORY_COSTUME_ITEM0 && slot <= INVENTORY_COSTUME_ITEM0 + MAX_COSTUME_IDX) {
                 part_idx = inventory2part(slot - INVENTORY_COSTUME_ITEM0);
                 if (part_idx >= BODY_PART_HELMET && part_idx < MAX_BODY_PART) {
@@ -294,7 +304,7 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
                 }
             }
         }
-
+        // 3. Append character data to the packet to send to the client.
         pCPacket.AppendString((char*)char_name.c_str());
         pCPacket.AppendData(&char_info, sizeof(tagCHARINFO));
         pCPacket.AppendData(equipment, sizeof(tagPartITEM) * MAX_BODY_PART);
@@ -324,7 +334,7 @@ CWS_ThreadSQL::Proc_cli_CHAR_LIST(tagQueryDATA* pSqlPACKET) {
             LOG_ERROR("Failed to delete character(s): {}", delete_res.error_message());
         }
     }
-
+    // ... send packet and handle character deletion ...
     return true;
 }
 
@@ -707,6 +717,9 @@ CWS_ThreadSQL::handle_queued_packet(QueuedPacket& p) {
 
 bool
 CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
+    // ... character creation setup and validation ...
+
+
     const Packets::CharacterCreateRequest* req =
         p.packet.packet_data()->data_as_CharacterCreateRequest();
 
@@ -807,8 +820,10 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
 
     CInventory& inv = m_pDefaultINV[gender_id];
 
+    // Start a transaction to ensure atomicity
     QueryResult trans_res = this->db.query("BEGIN", {});
     if (!trans_res.is_ok()) {
+        // ... error handling ...
         LOG_ERROR("Failed to begin transaction when creating '{}': {}",
             char_name,
             trans_res.error_message());
@@ -857,8 +872,10 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
         return false;
     }
 
+    // ... insert into 'character' table and get new character ID ...
     std::string char_id = char_res.get_string(0, 0);
 
+    // 1. Loop through all default items for the new character.
     std::string bulk;
     for (size_t i = 0; i < INVENTORY_TOTAL_SIZE; ++i) {
         tagITEM& item = m_pDefaultINV[gender_id].m_ItemLIST[i];
@@ -879,6 +896,7 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
         uint16_t quantity = 1;
 
         if (item.IsEnableDupCNT()) {
+            // ... handle stackable items ...
             quantity = item.GetQuantity();
         } else {
             gem_id = item.GetGemNO();
@@ -890,6 +908,9 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
             is_crafted = item.IsCreated();
         }
 
+        // 2. Build the INSERT statement for the `item` table with all properties.
+        // The crash is likely due to the loading logic misinterpreting one of these fields,
+        // especially boolean flags like `socket`.
         bulk += fmt::format(
             "INSERT INTO item (uuid, game_data_id, type_id, stat_id, grade, durability, "
             "lifespan, appraisal, socket, crafted) "
@@ -902,9 +923,10 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
             std::to_string(durability),
             std::to_string(lifespan),
             PG_BOOL(is_appraisal),
-            PG_BOOL(has_socket),
+            PG_BOOL(has_socket), // Here is where the socket data is written
             PG_BOOL(is_crafted));
 
+        // 3. Build the INSERT for the `inventory` table to link the item to the character.
         bulk += fmt::format("INSERT INTO inventory (owner_id, slot, quantity, item_id) "
                             "VALUES ({}, {}, {}, (SELECT id FROM item WHERE uuid='{}'));",
             char_id,
@@ -913,6 +935,7 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
             item.uuid.to_string());
     }
 
+    // 4. Execute the bulk insert and commit the transaction.
     QueryResult bulk_res = this->db.batch(bulk);
     if (!bulk_res.is_ok()) {
         LOG_ERROR("Failed to insert default items for character '{}': {}",
@@ -926,10 +949,12 @@ CWS_ThreadSQL::handle_char_create_req(QueuedPacket& p) {
                 trans_res.error_message());
         }
         g_pUserLIST->Send_wsv_CREATE_CHAR(p.socket_id, RESULT_CREATE_CHAR_FAILED);
+        // ... error handling and rollback ...
         return false;
     }
 
     trans_res = this->db.query("COMMIT", {});
+    // ... error handling ...
     if (!trans_res.is_ok()) {
         LOG_ERROR("Failed to commit transaction when creating '{}': {}",
             char_name,

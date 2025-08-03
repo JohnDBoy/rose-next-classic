@@ -21,4 +21,4 @@ This document outlines the development plan for the `rose-next-classic` project.
 *   **Goal**: Improve documentation clarity, fix critical bugs, and refine the codebase.
 *   **Previous Task (Complete)**: Optimize all `gemini/*.md` files for clarity and brevity.
 *   **Previous Task (Complete)**: Verified that the authentication hashing scheme is working as intended. The issue is now closed.
-*   **Current Task**: Document the newly identified bug related to character relogging issues.
+*   **Current Task**: Investigate the world server crash caused by logging in with characters that have spawned items. See `gemini/gemini_knownbugs.md` for details.

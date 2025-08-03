@@ -28,3 +28,4 @@ For a complete list and description of each `gemini/*.md` file, refer to the qui
 3.  **Propose Changes**: Provide all code modifications in `diff` format with absolute file paths.
 4.  **Update Memory**: After every action, append a summary to `gemini/gemini_memory.md`.
 5.  **Update Plan**: Upon task completion, update `gemini/gemini_gameplan.md`.
+6.  **Always Update As Needed**: Upon completing all tasks, propmpt to update all relevent `gemini/gemini_*.md` files.
