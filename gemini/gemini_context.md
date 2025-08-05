@@ -21,3 +21,9 @@ This document provides high-level historical and technical context.
 *   **Asset Pipeline**: Converts between formats like `.stb` and `.csv`.
 *   **Known Issues**: See `gemini/gemini_knownbugs.md` for the current bug list.
 *   **Verification Needed**: The operational status of the database connection and ImGui implementation is unverified.
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

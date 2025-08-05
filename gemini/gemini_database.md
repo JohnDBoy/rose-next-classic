@@ -70,3 +70,9 @@ A link table connecting characters to their items.
 | `slot`     | `integer` | Inventory slot number.                           |
 | `quantity` | `integer` | Stack size for stackable items.                  |
 | `item_id`  | `integer` | Item instance ID (FK to `item.id`).              |
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

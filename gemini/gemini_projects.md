@@ -38,3 +38,9 @@ This file lists the C++ projects in the `rose-next.sln` and `thirdparty.sln` sol
 *   **`nvtristrip`**: NVIDIA triangle stripping library.
 *   **`ogg`, `vorbis`, `vorbisfile`**: Ogg Vorbis audio libraries.
 *   **`zlib`**: Data compression library.
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

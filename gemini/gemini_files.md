@@ -57,3 +57,9 @@ This file is a curated list of important files in the `rose-next-classic` projec
 *   **`src/pipeline/`**: Source code for the `pipeline.exe` asset processing tool.
 *   **`assets/bake.manifest`**: Defines rules for processing source assets.
 *   **`assets/pack.manifest`**: Defines rules for packing baked assets into VFS archives.
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

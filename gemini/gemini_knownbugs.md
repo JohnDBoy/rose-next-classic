@@ -28,6 +28,16 @@ This document tracks known bugs in the `rose-next-classic` project.
     5.  Attempt to log back into the same account.
     6.  The world server will crash during character loading.
 *   **Preliminary Analysis**: This is likely a data serialization/deserialization bug. The game server saves the item data to the database in a format that the world server cannot correctly parse when loading the character. The "socket" property of the item is a likely culprit.
+*   **Investigation Update**: The character loading logic in `gs_threadsql.cpp` (`Proc_cli_SELECT_CHAR`) was reviewed. A section of code handling item appraisal was initially suspected, but after clarification of the `IsAppraisal()` mechanic, it was found to be correct. This rules out that specific logic block as the cause. The investigation should continue to compare the item saving logic in `gs_threadsql.cpp` with the character loading logic on the world server.
+*   **Investigation Update (New Direction)**: Based on a review of past issues, there is a strong possibility that this crash is not a code bug, but rather a symptom of an incorrect development environment setup. The server may be failing to load necessary game data files (STBs) due to incorrect paths in `server.toml` or improper asset symlinking as described in `dev_env_setup.md`. The next step is to verify the full environment configuration.
 *   **Files to Investigate**:
-    *   `src/sho_worldserver/src/ws_threadsql.cpp` (Character loading logic)
-    *   `src/sho_gameserver/src/gs_user.cpp` (Character saving logic)
+    *   `README.md` (Setup instructions)
+    *   `gemini/dev_env_setup.md` (Asset symlinking log)
+    *   `doc/server.toml.example` (Server configuration)
+
+    ---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_
+

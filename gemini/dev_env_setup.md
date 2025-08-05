@@ -28,3 +28,9 @@ Setting up dev server: Linking D:\RoseNext\rose-next-classic\bin\assets\debug =>
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 l----            8/1/2025  2:23 AM                3ddata -> D:\RoseNext\rose-next-classic\bin\assets\debug\3ddata
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

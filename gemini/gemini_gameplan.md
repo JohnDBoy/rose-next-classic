@@ -21,4 +21,14 @@ This document outlines the development plan for the `rose-next-classic` project.
 *   **Goal**: Improve documentation clarity, fix critical bugs, and refine the codebase.
 *   **Previous Task (Complete)**: Optimize all `gemini/*.md` files for clarity and brevity.
 *   **Previous Task (Complete)**: Verified that the authentication hashing scheme is working as intended. The issue is now closed.
-*   **Current Task**: Investigate the world server crash caused by logging in with characters that have spawned items. See `gemini/gemini_knownbugs.md` for details.
+*   **Current Task**: Verify Development Environment Setup.
+*     *   **Rationale**: The persistent world server crash may be caused by an incorrect environment setup (e.g., bad asset paths, misconfigured `server.toml`) rather than a code-level bug.
+*     *   **Action**: Systematically review the setup process.
+*   **Previous Task (Complete)**: Created a new, structured build guide (`gemini_readme.md`).
+*   **Current Task**: Corrected the build instructions in `gemini_readme.md` to include the critical first step of building the Rust dependencies. The documentation is now considered complete and accurate.
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_

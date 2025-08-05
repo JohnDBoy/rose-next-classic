@@ -42,3 +42,9 @@ The character persistence process is split between the world and game servers.
 *   **Saving Flow**:
     1.  **`sho_gameserver`**: On logout, the game server queues the character data for saving. The SQL thread then writes all data to the database.
         *   **File**: `src/sho_gameserver/
+
+---
+
+_Last Updated: YYYY-MM-DD_  
+_Maintainer: AI / Developer Name_  
+_File Version: 1.0_
