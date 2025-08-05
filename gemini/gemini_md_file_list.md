@@ -16,6 +16,8 @@ A quick reference index of all `gemini/*.md` files.
 *   **`gemini/dev_env_setup.md`**: Documents the development environment setup, specifically asset symlinking.
 *   **`gemini/gemini_boot.md`**: Defines the initialization sequence for context loading.
 *   **`gemini/gemini_context.md`**: Project history and high-level context.
+*   **`gemini/gemini_costume_documentation.md`**: Detailed documentation of the costume system.
+*   **`gemini/gemini_data_flow.md`**: Overview of the project's data flow (CSV, STB, VFS).
 *   **`gemini/gemini_database.md`**: Database schema documentation.
 *   **`gemini/gemini_debugplan.md`**: Debugging strategies and tools.
 *   **`gemini/gemini_files.md`**: Index of important source code files.
@@ -32,7 +34,7 @@ A quick reference index of all `gemini/*.md` files.
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_
 

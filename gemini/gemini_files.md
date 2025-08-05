@@ -60,6 +60,6 @@ This file is a curated list of important files in the `rose-next-classic` projec
 
 ---
 
-_Last Updated: YYYY-MM-DD_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.0_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_

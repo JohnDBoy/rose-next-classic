@@ -24,7 +24,7 @@ For a complete list and description of each `gemini/*.md` file, refer to the qui
 ## Development Workflow
 
 1.  **Consult Game Plan**: Refer to `gemini/gemini_gameplan.md` to understand the current task.
-2.  **Gather Context**: Use the `gemini/*.md` documentation files to gather context.
+2.  **Gather Context**: Use the `gemini/*.md` documentation files to gather and store context.
 3.  **Propose Changes**: Provide all code modifications in `diff` format with absolute file paths.
 4.  **Update Memory**: After every action, append a summary to `gemini/gemini_memory.md`.
 5.  **Update Plan**: Upon task completion, update `gemini/gemini_gameplan.md`.
@@ -32,6 +32,6 @@ For a complete list and description of each `gemini/*.md` file, refer to the qui
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_

@@ -38,7 +38,7 @@ This document tracks known bugs in the `rose-next-classic` project.
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_
 

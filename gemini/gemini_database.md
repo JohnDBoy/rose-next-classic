@@ -73,6 +73,6 @@ A link table connecting characters to their items.
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_

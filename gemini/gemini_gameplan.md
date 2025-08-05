@@ -30,6 +30,6 @@ This document outlines the development plan for the `rose-next-classic` project.
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: Gemini / Developer: JDoeBoy  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_

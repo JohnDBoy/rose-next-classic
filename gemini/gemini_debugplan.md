@@ -46,7 +46,7 @@ The character persistence process is split between the world and game servers.
 
 ---
 
-_Last Updated: 2025-08-04_  
-_Maintainer: AI / Developer Name_  
-_File Version: 1.1_
+_Last Updated: 2025-08-05_
+_Maintainer: Gemini / Developer: JDoeBoy
+_File Version: 1.2_
 
