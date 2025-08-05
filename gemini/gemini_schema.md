@@ -16,24 +16,11 @@ This document describes the standard layout and sections for all `gemini_*.md` f
 
 ## Standard Structure for All Files
 
-1. **Instruction Header**  
-   Always start with a standardized instruction block that defines the file’s purpose, usage, and integrity constraints.
-
-2. **Main Title**  
-   A concise title that reflects the file’s scope.
-
-3. **Purpose Section**  
-   Clearly describe what this file is for and how it should be used by Gemini or developers.
-
-4. **Core Content Sections**  
-   Use headings and bullet points to structure the main content. Typical sections include:
-   - Context
-   - Key Data / Entries
-   - Steps / Tasks / Logs
-   - References or Dependencies
-
-5. **Footer Metadata**  
-   Include version, update date, and maintainer info (see template below).
+1.  **Instruction Header**: Always start with a standardized instruction block that defines the file’s purpose, usage, and integrity constraints.
+2.  **Main Title**: A concise title that reflects the file’s scope.
+3.  **Purpose Section**: Clearly describe what this file is for and how it should be used by Gemini or developers.
+4.  **Core Content Sections**: Use headings and bullet points to structure the main content. Use `---` to separate major sections.
+5.  **Footer Metadata**: Include version, update date, and maintainer info (see template below).
 
 ---
 
@@ -43,5 +30,12 @@ This document describes the standard layout and sections for all `gemini_*.md` f
 ---
 
 _Last Updated: YYYY-MM-DD_  
-_Maintainer: AI / Developer Name_  
+_Maintainer: Gemini / Developer: JDoeBoy  
 _File Version: 1.0_
+```
+
+---
+
+_Last Updated: 2025-08-04_  
+_Maintainer: Gemini / Developer: JDoeBoy  
+_File Version: 1.1_

@@ -61,5 +61,5 @@ This file is a curated list of important files in the `rose-next-classic` projec
 ---
 
 _Last Updated: YYYY-MM-DD_  
-_Maintainer: AI / Developer Name_  
+_Maintainer: Gemini / Developer: JDoeBoy  
 _File Version: 1.0_

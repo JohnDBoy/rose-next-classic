@@ -20,7 +20,7 @@ This document outlines debugging strategies and tools for the project.
 
 ## 2. Debugging The Client (`rosenext.exe`)
 *   **Setup**: Set `client` as the startup project in Visual Studio.
-*   **Key Files**: `src/client/winMAIN.cpp`, `src/client/CApplication.cpp`, `src/client/System/CGame.cpp`, `src/client/Network/CNetwork.cpp`.
+*   **Key Files**: `src/client/winmain.cpp`, `src/client/capplication.cpp`, `src/client/game.cpp`, `src/client/network/`.
 
 ## 3. Debugging Servers
 *   **Setup**: Run directly or attach with the VS debugger.
@@ -41,10 +41,12 @@ The character persistence process is split between the world and game servers.
 
 *   **Saving Flow**:
     1.  **`sho_gameserver`**: On logout, the game server queues the character data for saving. The SQL thread then writes all data to the database.
-        *   **File**: `src/sho_gameserver/
+        *   **File**: `src/sho_gameserver/src/gs_threadsql.cpp`
+        *   **Function**: `UpdateUserRECORD`
 
 ---
 
-_Last Updated: YYYY-MM-DD_  
+_Last Updated: 2025-08-04_  
 _Maintainer: AI / Developer Name_  
-_File Version: 1.0_
+_File Version: 1.1_
+

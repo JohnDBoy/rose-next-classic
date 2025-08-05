@@ -111,6 +111,8 @@ The easiest way to build the assets is to run the provided PowerShell script.
     ```
 This will create the necessary `3ddata`, `sound`, and other asset folders inside the `bin/assets/debug` and `bin/assets/release` directories.
 
+**Note:** You must re-run the `dev-setup.ps1` script (Step 5) after building assets to ensure the symbolic links are updated.
+
 ---
 
 ## Step 5: Development Environment Setup
@@ -201,6 +203,6 @@ This project uses a set of helper scripts and documentation located in the `gemi
 
 ---
 
-_Last Updated: YYYY-MM-DD_  
-_Maintainer: AI / Developer JDoeBoy  
-_File Version: 1.0_
+_Last Updated: 2025-08-04_  
+_Maintainer: Gemini / Developer JDoeBoy  
+_File Version: 1.1_
