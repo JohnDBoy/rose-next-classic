@@ -20,6 +20,7 @@ A quick reference index of all `gemini/*.md` files.
 *   **`gemini/gemini_data_flow.md`**: Overview of the project's data flow (CSV, STB, VFS).
 *   **`gemini/gemini_database.md`**: Database schema documentation.
 *   **`gemini/gemini_debugplan.md`**: Debugging strategies and tools.
+*   **`gemini/gemini_file_index.md`**: A comprehensive index of important files and their purposes within the project.
 *   **`gemini/gemini_files.md`**: Index of important source code files.
 *   **`gemini/gemini_gameplan.md`**: Project plan and task tracking.
 *   **`gemini/gemini_imgui.md`**: ImGui developer interface documentation.
@@ -31,10 +32,11 @@ A quick reference index of all `gemini/*.md` files.
 *   **`gemini/gemini_prompt.md`**: Your core operational instructions.
 *   **`gemini/gemini_readme.md`**: Clean, structured build instructions for the project.
 *   **`gemini/gemini_schema.md`**: Defines the structure and purpose of the `gemini/*.md` files.
+*   **`gemini/gemini_tasks.md`**: Outlines current and future tasks for the Gemini agent.
+*   **`gemini/how_to_gemini.md`**: Provides guidance on how to effectively interact with the Gemini agent.
 
 ---
 
 _Last Updated: 2025-08-05_
 _Maintainer: Gemini / Developer: JDoeBoy
 _File Version: 1.2_
-
