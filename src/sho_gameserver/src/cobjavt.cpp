@@ -172,18 +172,21 @@ CObjAVT::Get_MOTION(short nActionIdx) {
 }
 
 //-------------------------------------------------------------------------------------------------
+// Map equip inventory indices to visible body parts for model rendering.
+// Accessories (necklace, ring, earring) do not map to a visible part (-1).
 static short s_nEquipIdxToPartNO[] = {
-    -1, // 0
-    BODY_PART_FACE_ITEM, // EQUIP_IDX_FACE_ITEM = 1,
-    BODY_PART_HELMET, // EQUIP_IDX_HELMET,
-    BODY_PART_ARMOR, // EQUIP_IDX_ARMOR,
-    BODY_PART_KNAPSACK, // EQUIP_IDX_KNAPSACK,
-    BODY_PART_GAUNTLET, // EQUIP_IDX_GAUNTLET,
-    BODY_PART_BOOTS, // EQUIP_IDX_BOOTS,	// 5
-    BODY_PART_WEAPON_R, // EQUIP_IDX_WEAPON_R,
-    BODY_PART_WEAPON_L, // EQUIP_IDX_WEAPON_L,
-    -1, // EQUIP_IDX_NECKLACE,
-    -1, // EQUIP_IDX_RING,
+    -1,                   // 0 (EQUIP_IDX_NULL)
+    BODY_PART_FACE_ITEM,  // EQUIP_IDX_FACE_ITEM = 1
+    BODY_PART_HELMET,     // EQUIP_IDX_HELMET
+    BODY_PART_ARMOR,      // EQUIP_IDX_ARMOR
+    BODY_PART_KNAPSACK,   // EQUIP_IDX_KNAPSACK
+    BODY_PART_GAUNTLET,   // EQUIP_IDX_GAUNTLET
+    BODY_PART_BOOTS,      // EQUIP_IDX_BOOTS (index 6)
+    BODY_PART_WEAPON_R,   // EQUIP_IDX_WEAPON_R = 7
+    BODY_PART_WEAPON_L,   // EQUIP_IDX_WEAPON_L
+    -1,                   // EQUIP_IDX_NECKLACE
+    -1,                   // EQUIP_IDX_RING
+    -1                    // EQUIP_IDX_EARRING (ensure array covers index 11)
 };
 void
 CObjAVT::SetPartITEM(short nEquipInvIDX) {
@@ -197,7 +200,12 @@ CObjAVT::SetPartITEM(short nEquipInvIDX) {
     COMPILE_TIME_ASSERT(EQUIP_IDX_WEAPON_L == 8);
     COMPILE_TIME_ASSERT(EQUIP_IDX_NECKLACE == 9);
     COMPILE_TIME_ASSERT(EQUIP_IDX_RING == 10);
+    COMPILE_TIME_ASSERT(EQUIP_IDX_EARRING == 11);
 
+    // Guard array bounds before mapping
+    if (nEquipInvIDX < 0 || nEquipInvIDX >= (short)(sizeof(s_nEquipIdxToPartNO) / sizeof(s_nEquipIdxToPartNO[0]))) {
+        return;
+    }
     short nPartNO = s_nEquipIdxToPartNO[nEquipInvIDX];
     if (nPartNO > 0) {
         this->SetPartITEM(nPartNO, m_Inventory.m_ItemLIST[nEquipInvIDX]);
@@ -221,7 +229,11 @@ CObjAVT::SetRideITEM(short nRideInvIDX) {
 
 void
 CObjAVT::set_costume_item(short equip_idx) {
-    short part_index = s_nEquipIdxToPartNO[equip_idx - INVENTORY_COSTUME_ITEM0];
+    short map_index = equip_idx - INVENTORY_COSTUME_ITEM0;
+    if (map_index < 0 || map_index >= (short)(sizeof(s_nEquipIdxToPartNO) / sizeof(s_nEquipIdxToPartNO[0]))) {
+        return;
+    }
+    short part_index = s_nEquipIdxToPartNO[map_index];
     if (part_index < 0) {
         return;
     }
